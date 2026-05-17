@@ -6,6 +6,8 @@ app.use(cors()) // Habilita CORS para todas las rutas
 
 app.use(express.json()) // Middleware para parsear el cuerpo de las solicitudes como JSON
 
+app.use(express.static('dist'))
+
 let notes = [ // Array de notas iniciales
   {
     id: 1,
@@ -23,10 +25,6 @@ let notes = [ // Array de notas iniciales
     important: true
   }
 ]
-// Middleware para parsear el cuerpo de las solicitudes como JSON
-app.get('/', (request,response)=>{
-    response.send('<h1>Hello World!</h1>') // Responde con un mensaje HTML cuando se accede a la raíz del servidor  
-})
 
 // Ruta para obtener todas las notas
 app.get('/api/notes', (request, response) => {
